@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UserData</title>
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap/dist/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $(function () {
+        $("#btn").click(() => {
+          var data = {
+            FirstName: $("#txtFname").val(),
+            LastName: $("#txtLname").val(),
+            Email: $("#txtEmail").val(),
+            Mobile: $("#txtNumber").val(),
+            Password: $("#txtPassword").val(),
+            ConfirmPassword: $("#conPassword").val(),
+          };
+          $.ajax({
+            method: "POST",
+            url: "http://127.0.0.1:3300/registercustomer",
+            data: data,
+          }).then(() => {
+            alert("Registerd Successfully");
+          });
+        });
+      });
+
+      function samePass() {
+        var password = document.getElementById("txtPassword").value;
+        var conPassword = document.getElementById("conPassword").value;
+        var msg = document.getElementById("msg");
+        if (password === conPassword) {
+          msg.innerHTML = "Password matches".fontcolor("green");
+        } else {
+          msg.innerHTML = "Incorrect match".fontcolor("red");
+        }
+      }
+
+      function verifyMobile() {
+        var mobile = document.getElementById("txtNumber").value;
+        var msg = document.getElementById("errMsg");
+        var mobExp = /\+91\d{10}/;
+        if (mobile.match(mobExp)) {
+          msg.innerHTML = "Correct Format";
+        } else {
+          msg.innerHTML = "Mobile no not in the +91 Format";
+        }
+      }
+    </script>
+  </head>
+  <body class="container-fluid">
+    <div>
+      <dl>
+        <dt class="form-text">FirstName</dt>
+        <dd>
+          <input
+            type="text"
+            id="txtFname"
+            name="FirstName"
+            class="form-control w-25"
+          />
+        </dd>
+        <dt class="form-text">LastName</dt>
+        <dd class="form-text">
+          <input
+            type="text"
+            id="txtLname"
+            name="LastName"
+            class="form-control w-25"
+          />
+        </dd>
+        <dt class="form-text">Email</dt>
+        <dd>
+          <input
+            type="email"
+            id="txtEmail"
+            name="Email"
+            class="form-control w-25"
+          />
+        </dd>
+        <dt class="form-text">Mobile</dt>
+        <dd>
+          <input
+            type="text"
+            id="txtNumber"
+            name="Mobile"
+            class="form-control w-25"
+            onkeyup="verifyMobile()"
+          />
+        </dd>
+        <div id="errMsg"></div>
+        <dt class="form-text">Password</dt>
+        <dd>
+          <input
+            type="password"
+            id="txtPassword"
+            name="Password"
+            class="form-control w-25"
+          />
+        </dd>
+        <dt class="form-text">ConfirmPassword</dt>
+        <dd>
+          <input
+            type="password"
+            id="conPassword"
+            name="ConfirmPassword"
+            class="form-control w-25"
+            onkeyup="samePass()"
+          />
+        </dd>
+        <div id="msg"></div>
+      </dl>
+      <button id="btn" class="btn btn-primary mt-2">Submit</button>
+    </div>
+  </body>
+</html>

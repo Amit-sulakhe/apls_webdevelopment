@@ -1,0 +1,19 @@
+Name -:Amit Uday Sulakhe	
+Email -:amitsulakhe12@gmail.com
+Mob no -:9545554111
+
+
+Subject -:Assignment 2
+
+Here first, I have created a form where user have to fill the data and submit that data to the admin defined in the assignment
+to create that form i have used Bootstrap and jQuery library to perform the functionality. Here I, had given access to API 
+calls which I have decleared in the server file.I have called these methods through ajax. Talking about server side file
+Here I, have attached express library,mongoClient,and to remove cors issues have installed these librarires in the same folder
+Firstly I have called "getcustomers" method to check weather user data is able to submit to the backend or not.
+Then I, have given "POST" method call to submit the data to the database.
+Now according to the assignment description that data should get submit to the "test@aplswd.com" so have used "nodemailer"
+library to send the data to the resective email.
+                                                      
+
+Date -:15-Apr-22                                                                                                                   yours sincerely
+                                                                                                                    Amit Sulakhe 
